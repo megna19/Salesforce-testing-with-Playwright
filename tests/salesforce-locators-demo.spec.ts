@@ -13,7 +13,7 @@ async function openNewAccountDialog(page: Page) {
 
 test.describe('Salesforce Locators Practice', () => {
 
-  // 1. getByRole
+  //getByRole
   test('getByRole', async ({ page }) => {
     const dialog = await openNewAccountDialog(page);
 
@@ -22,7 +22,7 @@ test.describe('Salesforce Locators Practice', () => {
     await expect(dialog.getByRole('button', { name: 'Cancel', exact: true })).toBeVisible();
   });
 
-  // 2. getByLabel
+  //getByLabel
   test('getByLabel', async ({ page }) => {
     const dialog = await openNewAccountDialog(page);
 
@@ -33,7 +33,7 @@ test.describe('Salesforce Locators Practice', () => {
     await expect(dialog.getByLabel('Phone')).toHaveValue('994444444');
   });
 
-  // 3. getByPlaceholder
+  //getByPlaceholder
   test('getByPlaceholder', async ({ page }) => {
     await page.goto(appUrl('/lightning/o/Account/list'));
 
@@ -43,7 +43,7 @@ test.describe('Salesforce Locators Practice', () => {
     await expect(searchBox).toHaveValue('Practice');
   });
 
-  // 4. getByText
+  //getByText
   test('getByText', async ({ page }) => {
     const dialog = await openNewAccountDialog(page);
 
@@ -51,14 +51,14 @@ test.describe('Salesforce Locators Practice', () => {
     await expect(dialog.getByText('Phone').first()).toBeVisible();
   });
 
-  // 5. getByTitle
+  //getByTitle
   test('getByTitle', async ({ page }) => {
     await page.goto(appUrl('/lightning/o/Account/list'));
 
     await expect(page.getByTitle('Select list display')).toBeVisible();
   });
 
-  // 6. Child locators
+  //Child locators
   test('Child locators', async ({ page }) => {
     const dialog = await openNewAccountDialog(page);
 
@@ -70,7 +70,7 @@ test.describe('Salesforce Locators Practice', () => {
     await expect(nameField).toHaveValue('Child Locator Practice');
   });
 
-  // 7. Parent locators
+  //Parent locators
   test('Parent locators', async ({ page }) => {
     const dialog = await openNewAccountDialog(page);
 
@@ -82,7 +82,7 @@ test.describe('Salesforce Locators Practice', () => {
     await expect(phoneBlock.locator('input')).toHaveValue('1234567890');
   });
 
-  // 8. Reusing locators
+  //Reusing locators
   test('Reusing locators', async ({ page }) => {
     const dialog = await openNewAccountDialog(page);
 
@@ -96,7 +96,7 @@ test.describe('Salesforce Locators Practice', () => {
     await expect(phoneField).toHaveValue('5555555555');
   });
 
-  // 9. first(), nth(), last(), count()
+  //first(), nth(), last(), count()
   test('testtt', async ({ page }) => {
     const dialog = await openNewAccountDialog(page);
     const buttons = dialog.getByRole('button');
@@ -108,7 +108,7 @@ test.describe('Salesforce Locators Practice', () => {
     await expect(buttons.last()).toBeVisible();
   });
 
-  // 10. Extracting values
+  //Extracting values
   test('Extracting values', async ({ page }) => {
     const dialog = await openNewAccountDialog(page);
     const nameField = dialog.getByLabel('Account Name');
@@ -131,7 +131,7 @@ test.describe('Salesforce Locators Practice', () => {
     expect(allButtonTexts.join(' ')).toContain('Save');
   });
 
-  // 11. Assertions
+  //Assertions
   test('Assertions', async ({ page }) => {
     expect(5).toEqual(5);
 
@@ -151,7 +151,7 @@ test.describe('Salesforce Locators Practice', () => {
     await expect(dialog).not.toBeVisible();
   });
 
-  // 12. Negative test
+  //Negative test
   test('Negative test - empty Account Name', async ({ page }) => {
     const dialog = await openNewAccountDialog(page);
 
