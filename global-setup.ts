@@ -13,7 +13,7 @@ async function globalSetup(_config: FullConfig) {
 
   fs.mkdirSync('auth', { recursive: true });
 
-  // Lightning address, for example https://xxxx.lightning.force.com
+  // Lightning address
   const { instanceUrl } = getOrgInfo();
   const lightningBase = toLightningUrl(instanceUrl);
 
@@ -42,7 +42,6 @@ async function globalSetup(_config: FullConfig) {
       { timeout: 90_000 }
     );
 
-    // Wait for the visible navigation bar (">> visible=true" skips hidden elements)
     await page
       .locator(
         '.slds-global-header, one-app-launcher-header, .slds-context-bar >> visible=true'
@@ -53,7 +52,7 @@ async function globalSetup(_config: FullConfig) {
     await context.storageState({ path: 'auth/sf-session.json' });
     fs.writeFileSync('auth/base-url.txt', lightningBase);
   } catch (error) {
-    // Save a picture of what the hidden browser saw, to help find the problem
+
     await page.screenshot({ path: 'auth/setup-failed.png', fullPage: true });
     console.error(`Login failed. Page address was: ${page.url()}`);
     console.error('Screenshot saved to auth/setup-failed.png');
